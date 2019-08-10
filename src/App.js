@@ -12,7 +12,7 @@ export default class App extends Component {
             {
                 id: 2,
                 title: 'Lorem ipsum dolor sit amet, consectetur adipisicing.',
-                completed: true,
+                completed: false,
             },
             {
                 id: 3,
@@ -35,10 +35,18 @@ export default class App extends Component {
         )
     }
 
+    delTodo = (id) => {
+        this.setState(
+            {
+                todos: [...this.state.todos.filter(todo => todo.id !== id)] 
+            }
+        )
+    }
+
     render() {
         return (
             <div className='container mt-5'>
-                <Todos todos={this.state.todos} markComplete={this.markComplete} />
+                <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
             </div>
         )
     }

@@ -18,6 +18,7 @@ export default class TodoItem extends Component {
                 <p style={this.getStyle()}>
                     <input className='m-3' type="checkbox" onChange={this.props.markComplete.bind(this, id)} /> 
                     {title}
+                    <button onClick={this.props.delTodo.bind(this, id)} className='btn btn-danger float-right mt-1'>x</button>
                 </p>
             </div>
         )
