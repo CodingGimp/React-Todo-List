@@ -12,7 +12,7 @@ export default class App extends Component {
             {
                 id: 2,
                 title: 'Lorem ipsum dolor sit amet, consectetur adipisicing.',
-                completed: false,
+                completed: true,
             },
             {
                 id: 3,
@@ -22,10 +22,23 @@ export default class App extends Component {
         ]
     }
 
+    markComplete = (id) => {
+        this.setState(
+            {
+                todos: this.state.todos.map(todo => {
+                    if(todo.id === id){
+                        todo.completed = !todo.completed
+                    }
+                    return todo
+                })
+            }
+        )
+    }
+
     render() {
         return (
-            <div className='container'>
-                <Todos todos={this.state.todos} />
+            <div className='container mt-5'>
+                <Todos todos={this.state.todos} markComplete={this.markComplete} />
             </div>
         )
     }
